@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/jpeg" href="c:\Users\glilk\Downloads\i.webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIO JopaJapan // Bio</title>
+    <style>
+        body::before {
+    background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUHCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/yQALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA="); /* Здесь будут тысячи строк кода вашей картины */
+}
+
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            font-family: 'Courier New', Courier, monospace;
+            color: #d1c7bd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            background: linear-gradient(rgba(13, 13, 13, 0.75), rgba(13, 13, 13, 0.85)), 
+                        url('https://unsplash.com') no-repeat center center;
+            background-size: cover;
+            z-index: -2;
+            filter: grayscale(40%) contrast(120%);
+        }
+
+        
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://csscream.com');
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        
+        .card-container {
+            background: rgba(22, 22, 22, 0.75);
+            border: 1px solid rgba(161, 142, 122, 0.2);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            animation: fadeInCard 1.5s ease-out;
+        }
+
+        
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #a18e7a;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(161, 142, 122, 0.3);
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #706558;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* Интерактивная терминальная консоль для БИО */
+        .terminal {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(161, 142, 122, 0.15);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: left;
+            min-height: 120px;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+        }
+
+        .terminal-header {
+            color: #706558;
+            font-size: 11px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed rgba(161, 142, 122, 0.15);
+            padding-bottom: 5px;
+        }
+
+        /* Кнопки переключения команд */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .bio-btn {
+            background: transparent;
+            border: 1px solid #a18e7a;
+            color: #a18e7a;
+            padding: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .bio-btn:hover, .bio-btn.active {
+            background: #a18e7a;
+            color: #0d0d0d;
+            box-shadow: 0 0 15px rgba(161, 142, 122, 0.4);
+        }
+
+        /* 2. Блок с анимированной гифкой Джошуа Грэхема */
+        .joshua-container {
+            margin-top: 25px;
+            border-top: 1px solid rgba(161, 142, 122, 0.2);
+            padding-top: 25px;
+        }
+
+        .joshua-gif {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 2px;
+            border: 1px solid rgba(161, 142, 122, 0.3);
+            filter: sepia(30%) contrast(110%) brightness(90%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+            transition: transform 0.5s ease;
+        }
+
+        .joshua-gif:hover {
+            transform: scale(1.03);
+            filter: sepia(0%) contrast(120%);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 11px;
+            color: #706558;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grain-overlay"></div>
+
+    <div class="card-container">
+        
+        <h1>JopaJapana</h1>
+        <div class="subtitle">// Фронтенд-Затейник & Интегратор</div>
+
+        
+        <div class="terminal">
+            <div class="terminal-header">SYSTEM@BIO_TERMINAL:~$ running command...</div>
+            <div id="output-text">Нажмите на любую команду ниже, чтобы прогрузить лог данных...</div>
+        </div>
+
+        
+        <div class="btn-group">
+            <button class="bio-btn" onclick="runCommand('skills')">> Стек / Навыки</button>
+            <button class="bio-btn" onclick="runCommand('projects')">> Проекты</button>
+            <button class="bio-btn" onclick="runCommand('status')">> Текущий статус</button>
+            <button class="bio-btn" onclick="runCommand('contacts')">> Контакты</button>
+        </div>
+
+        
+        <div class="joshua-container">
+            <img class="joshua-gif" src="c:\Users\glilk\Downloads\i (1).webp" alt="Joshua Graham">
+
+            <span class="quote">"I survived because the fire inside burned brighter than the fire around me."</span>
+        </div>
+    </div>
+
+    <script>
+        function runCommand(type) {
+           
+            const buttons = document.querySelectorAll('.bio-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const output = document.getElementById('output-text');
+            
+            
+            if (type === 'skills') {
+                output.innerHTML = "<strong>[SKILLS]:</strong> HTML5, CSS3, ES6 JavaScript, REST API, Интеграция веб-сервисов с архитектурой 1С / ERP. Проектирование сложных интерактивных UI систем.";
+            } else if (type === 'projects') {
+                output.innerHTML = "<strong>[PROJECTS]:</strong><br>- Интеграция Личного Кабинета с БД 1С.<br>- Разработка кастомных UI-компонентов.<br>- Модули автоматизации обмена данными.";
+            } else if (type === 'status') {
+                output.innerHTML = "<strong>[STATUS]:</strong> Прокачиваю инженерные веб-навыки, укрощаю формы данных, изучаю архитектуру API взаимодействия.";
+            } else if (type === 'contacts') {
+                output.innerHTML = "<strong>[CONTACTS]:</strong><br>Telegram: @jopajapan<br>Email: w875946@gmail.com<br>";
+            }
+        }
+    </script>
+</body>
+</html>
